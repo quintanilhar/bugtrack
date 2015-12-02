@@ -10,7 +10,12 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::controllers([
+    'auth' => 'Auth\AuthController'
+]);
 
-Route::get('/', function () {
-    return view('welcome');
+$router->group(['middleware' => 'auth'], function ($router) {
+    Route::get('/', function () {
+        return view('dashboard.index');
+    });
 });
