@@ -38,7 +38,7 @@
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <li>
-              <a href="#" role="button">
+              <a href="{{ url('/bugs/add') }}" role="button">
                 <i class="fa fa-plus"></i> Cadastrar Bug
               </a>
           </li>
@@ -60,7 +60,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="theme/admin-lte/2.3.0/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="{{ asset('/theme/admin-lte/2.3.0/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Alexander Pierce</p>

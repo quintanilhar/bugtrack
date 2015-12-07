@@ -18,4 +18,9 @@ $router->group(['middleware' => 'auth'], function ($router) {
     Route::get('/', function () {
         return view('dashboard.index');
     });
+
+    Route::group(['prefix' => 'bugs'], function () {
+        Route::get('/add', 'BugController@add');
+        Route::post('/save', 'BugController@save');
+    });
 });
