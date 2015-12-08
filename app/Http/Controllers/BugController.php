@@ -10,6 +10,7 @@ use App\Repository\PriorityRepository;
 use App\Repository\ProductCategoryRepository;
 use App\Repository\ProductRepository;
 use App\Repository\BugRepository;
+use App\Bug;
 
 class BugController extends Controller
 {
@@ -22,10 +23,15 @@ class BugController extends Controller
 
     public function index(Request $request)
     {
+        $filters = [
+            'status' => $request->query('status', Bug::OPENED)
+        ];
+
         return view(
             'bugs.index',
             [
-                'bugs' => $this->bugRepository->fetchAll()
+                'bugs' => $this->bugRepository->fetchAll($filters),
+                'filters' => $filters
             ]
         );
     }

@@ -5,19 +5,19 @@
 @section('content')
 <div class="nav-tabs-custom">
     <ul class="nav nav-tabs">
-        <li>
+        <li {!! $filters['status'] ==  'opened' ? 'class="active"' : '' !!}>
             <a href="{{ url('/bugs') }}?status=opened">
                 <span>Opened</span>
-                <span class="label label-default">39</span>
+                <span class="label label-default">{{ count($bugs) }}</span>
             </a>
         </li>
-        <li>
+        <li {!! $filters['status'] ==  'closed' ? 'class="active"' : '' !!}>
             <a href="{{ url('/bugs') }}?status=closed">
                 <span>Closed</span>
                 <span class="label label-default">2994</span>
             </a>
         </li>
-        <li class="active">
+        <li {!! $filters['status'] ==  'all' ? 'class="active"' : '' !!}>
             <a href="{{ url('/bugs') }}?status=all">
                 <span>All</span>
                 <span class="label label-default">4353</span>
