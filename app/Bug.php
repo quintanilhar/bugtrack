@@ -6,13 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bug extends Model
 {
-    const STATUS_NEW = 1;
+    const OPENED = 'opened';
+    const CLOSED = 'closed';
+    const REOPENED = 'reopened';
 
     protected $fillable = ['title', 'description', 'priority_id', 'product_id'];
 
     protected $attributes = array(
         'engineer_id' => null,
-        'status' => self::STATUS_NEW
+        'status' => self::OPENED
     );
 
     public function priority()

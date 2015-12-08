@@ -87,7 +87,7 @@
             <a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
         </li>
         <li>
-            <a href="#"><i class="fa fa-book"></i> <span>Bugs</span></a>
+            <a href="{{ url('/bugs') }}"><i class="fa fa-exclamation-circle"></i> <span>Bugs</span></a>
         </li>
         <li>
             <a href="#"><i class="fa fa-area-chart"></i> <span>Estatísticas</span></a>

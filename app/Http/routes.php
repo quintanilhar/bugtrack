@@ -20,6 +20,7 @@ $router->group(['middleware' => 'auth'], function ($router) {
     });
 
     Route::group(['prefix' => 'bugs'], function () {
+        Route::get('/', 'BugController@index');
         Route::get('/add', 'BugController@add');
         Route::post('/save', 'BugController@save');
     });

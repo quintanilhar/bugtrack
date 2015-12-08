@@ -18,7 +18,7 @@ class CreateBugsTable extends Migration
             $table->integer('engineer_id')->unsigned()->nullable()->index();
             $table->integer('product_id')->unsigned()->index();
             $table->integer('priority_id')->unsigned()->index();
-            $table->tinyInteger('status')->unsigned();
+            $table->string('status', 10);
             $table->string('title', 150);
             $table->longText('description');
             $table->timestamps();

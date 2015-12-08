@@ -9,9 +9,27 @@ use App\Http\Controllers\Controller;
 use App\Repository\PriorityRepository;
 use App\Repository\ProductCategoryRepository;
 use App\Repository\ProductRepository;
+use App\Repository\BugRepository;
 
 class BugController extends Controller
 {
+    private $bugRepository;
+
+    public function __construct(BugRepository $bugRepository)
+    {
+        $this->bugRepository = $bugRepository;
+    }
+
+    public function index(Request $request)
+    {
+        return view(
+            'bugs.index',
+            [
+                'bugs' => $this->bugRepository->fetchAll()
+            ]
+        );
+    }
+
     public function add(Request $request)
     {
         $priorityRepository = new PriorityRepository();
