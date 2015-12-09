@@ -24,14 +24,15 @@ class BugController extends Controller
     public function index(Request $request)
     {
         $filters = [
-            'status' => $request->query('status', Bug::OPENED)
+            'status' => $request->query('status', Bug::OPENED),
+            'reporter_id' => $request->query('reporter_id', null)
         ];
 
         return view(
             'bugs.index',
             [
                 'bugs' => $this->bugRepository->fetchAll($filters),
-                'containers' => $this->bugRepository->fetchContainers($filters),
+                'containers' => $this->bugRepository->fetchContainers(),
                 'filters' => $filters
             ]
         );

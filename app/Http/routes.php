@@ -24,4 +24,8 @@ $router->group(['middleware' => 'auth'], function ($router) {
         Route::get('/add', 'BugController@add');
         Route::post('/save', 'BugController@save');
     });
+
+    Route::group(['prefix' => 'reporters'], function () {
+        Route::get('/', 'ReporterController@index');
+    });
 });

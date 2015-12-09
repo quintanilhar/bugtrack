@@ -2,6 +2,12 @@
 
 @section('title', 'Bugs')
 
+@section('styles')
+    <link href="{{ url('/vendor/select2/dist/css/select2.min.css') }}" rel="stylesheet" type="text/css">
+
+    @parent
+@endsection
+
 @section('content')
 <div class="nav-tabs-custom">
     <ul class="nav nav-tabs">
@@ -25,6 +31,17 @@
         </li>
     </ul>
     <div class="tab-content">
+        <form type="get" action="{{ url('/bugs') }}" name="filters">
+            <input type="hidden" name="status" value="{{ $filters['status'] }}" />
+            <input type="hidden" name="reporter_id" value="{{ $filters['reporter_id'] }}" />
+        </form>
+        <div class="row">
+            <div class="col-md-4">
+                <select name="reporter" class="form-control">
+                    <option></option>
+                </select>
+            </div>
+        </div>
         <div class="active tab-pane">
             <ul class="list-group list-group-unbordered">
                 @foreach ($bugs as $key => $bug)
@@ -41,4 +58,11 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+    @parent
+
+    <script src="{{ url('/vendor/select2/dist/js/select2.min.js') }}"></script>
+    <script src="{{ url('/js/bugs/main.js') }}"></script>
 @endsection
