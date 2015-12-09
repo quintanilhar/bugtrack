@@ -31,6 +31,7 @@ class BugController extends Controller
             'bugs.index',
             [
                 'bugs' => $this->bugRepository->fetchAll($filters),
+                'containers' => $this->bugRepository->fetchContainers($filters),
                 'filters' => $filters
             ]
         );

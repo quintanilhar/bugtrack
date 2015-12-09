@@ -16,4 +16,15 @@ class BugRepository
             ->where($filters)
             ->get();
     }
+
+    public function fetchContainers($filters = [])
+    {
+        unset($filters['status']);
+
+        return [
+            'opened' => Bug::where('status', Bug::OPENED)->count(),
+            'closed' => Bug::where('status', Bug::CLOSED)->count(),
+            'all' => Bug::count()
+        ];
+    }
 }

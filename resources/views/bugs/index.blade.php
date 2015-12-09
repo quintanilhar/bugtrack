@@ -8,19 +8,19 @@
         <li {!! $filters['status'] ==  'opened' ? 'class="active"' : '' !!}>
             <a href="{{ url('/bugs') }}?status=opened">
                 <span>Opened</span>
-                <span class="label label-default">{{ count($bugs) }}</span>
+                <span class="label label-default">{{ $containers['opened'] }}</span>
             </a>
         </li>
         <li {!! $filters['status'] ==  'closed' ? 'class="active"' : '' !!}>
             <a href="{{ url('/bugs') }}?status=closed">
                 <span>Closed</span>
-                <span class="label label-default">2994</span>
+                <span class="label label-default">{{ $containers['closed'] }}</span>
             </a>
         </li>
         <li {!! $filters['status'] ==  'all' ? 'class="active"' : '' !!}>
             <a href="{{ url('/bugs') }}?status=all">
                 <span>All</span>
-                <span class="label label-default">4353</span>
+                <span class="label label-default">{{ $containers['all'] }}</span>
             </a>
         </li>
     </ul>
