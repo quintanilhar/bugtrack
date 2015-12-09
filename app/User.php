@@ -43,4 +43,9 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasMany(Bug::class, 'reporter_id');
     }
+
+    public function scopeEngineers($query)
+    {
+        $query->where('role', 'engineer');
+    }
 }

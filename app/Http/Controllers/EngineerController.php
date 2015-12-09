@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repository\UserRepository;
 
-class ReporterController extends Controller
+class EngineerController extends Controller
 {
     private $userRepository;
 
@@ -23,6 +23,6 @@ class ReporterController extends Controller
             'name' => $request->query('name', null)
         ];
         
-        return $this->userRepository->fetchAllReporters($filters);
+        return $this->userRepository->fetchAllEngineers($filters);
     }
 }

@@ -28,4 +28,8 @@ $router->group(['middleware' => 'auth'], function ($router) {
     Route::group(['prefix' => 'reporters'], function () {
         Route::get('/', 'ReporterController@index');
     });
+
+    Route::group(['prefix' => 'engineers'], function () {
+        Route::get('/', 'EngineerController@index');
+    });
 });

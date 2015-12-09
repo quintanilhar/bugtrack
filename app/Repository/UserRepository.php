@@ -18,4 +18,17 @@ class UserRepository
             
         return $queryBuilder->get();
     }
+
+    public function fetchAllEngineers(array $filters = [])
+    {
+        $queryBuilder = User::engineers()
+            ->orderBy('name')
+            ->limit(20);
+
+        if (isset($filters['name'])) {
+            $queryBuilder->where('name', 'like', '%' . $filters['name'] . '%');
+        }
+            
+        return $queryBuilder->get();
+    }
 }

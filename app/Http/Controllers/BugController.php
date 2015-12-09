@@ -25,7 +25,8 @@ class BugController extends Controller
     {
         $filters = [
             'status' => $request->query('status', Bug::OPENED),
-            'reporter_id' => $request->query('reporter_id', null)
+            'reporter_id' => $request->query('reporter_id', null),
+            'engineer_id' => $request->query('engineer_id', null),
         ];
 
         return view(

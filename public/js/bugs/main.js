@@ -33,3 +33,37 @@ console.log(items);
     filtersForm.find('input[name="reporter_id"]').val(e.params.data.id);
     filtersForm.submit();  
 });
+
+$('select[name="assignee"]').select2({
+    placeholder: "Engineer",
+    ajax: {
+        url: '/engineers',
+        dataType: 'json',
+        delay: 250,
+        data: function (params) {
+          return {
+            name: params.term, // search term
+            page: params.page
+          };
+        },
+        processResults: function (data, params) {
+          var items = [];
+          $.each(data, function(index, item){
+            items.push({id: item.id, text: item.name});
+          });
+console.log(items);
+          params.page = params.page || 1;
+     
+          return {
+            results: items,
+            pagination: {
+              more: (params.page * 20) < data.total_count
+            }
+          };
+        },
+        cache: true
+    }
+}).on("select2:select", function (e) {
+    filtersForm.find('input[name="engineer_id"]').val(e.params.data.id);
+    filtersForm.submit();  
+});
