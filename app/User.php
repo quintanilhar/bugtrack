@@ -16,6 +16,9 @@ class User extends Model implements AuthenticatableContract,
 {
     use Authenticatable, Authorizable, CanResetPassword;
 
+    const ROLE_REPORTER =  'reporter';
+    const ROLE_ENGINEER = 'engineer';
+
     /**
      * The database table used by the model.
      *

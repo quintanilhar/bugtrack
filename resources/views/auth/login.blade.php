@@ -22,7 +22,7 @@
       <div class="row">
         <div class="col-xs-12">
           {{ csrf_field() }}
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Acessar!</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat" class="btn" name="btn-login">Acessar!</button>
         </div>
         <!-- /.col -->
       </div>

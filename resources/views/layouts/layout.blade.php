@@ -103,9 +103,7 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        Dashboard
-      </h1>
+      <h1 class="title">Bugs</h1>
       <ol class="breadcrumb">
         <li><a href="#">Bugtrack</a></li>
         <li class="active">Dashboard</li>

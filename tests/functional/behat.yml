@@ -1,0 +1,11 @@
+default:
+  suites:
+    bug_features:
+      paths: [ %paths.base%/features/bug ]
+      contexts: [ BugContext ]
+  extensions:
+    Behat\MinkExtension:
+      base_url:  'http://localhost:8000'
+      sessions:
+        default:
+          goutte: ~

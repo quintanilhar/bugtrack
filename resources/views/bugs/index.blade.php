@@ -10,7 +10,7 @@
 
 @section('content')
 <div class="nav-tabs-custom">
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs containers">
         <li {!! $filters['status'] ==  'opened' ? 'class="active"' : '' !!}>
             <a href="{{ url('/bugs') }}?status=opened">
                 <span>Opened</span>
@@ -31,23 +31,35 @@
         </li>
     </ul>
     <div class="tab-content">
-        <form type="get" action="{{ url('/bugs') }}" name="filters">
-            <input type="hidden" name="status" value="{{ $filters['status'] }}" />
-            <input type="hidden" name="reporter_id" value="{{ $filters['reporter_id'] }}" />
-            <input type="hidden" name="engineer_id" value="{{ $filters['engineer_id'] }}" />
-        </form>
+        <div class="filter-container">
+            <form type="get" action="{{ url('/bugs') }}" name="filters">
+                <input type="hidden" name="status" value="{{ $filters['status'] }}" />
+                <input type="hidden" name="reporter_id" value="{{ $filters['reporter_id'] }}" />
+                <input type="hidden" name="engineer_id" value="{{ $filters['engineer_id'] }}" />
+            </form>
+            <div class="row">
+                <div class="col-md-4">
+                    <select name="reporter" class="form-control">
+                        <option></option>
+                    </select>
+                </div>
 
-        <div class="row">
-            <div class="col-md-4">
-                <select name="reporter" class="form-control">
-                    <option></option>
-                </select>
+                <div class="col-md-4">
+                    <select name="assignee" class="form-control">
+                        <option></option>
+                    </select>
+                </div>
             </div>
-
-            <div class="col-md-4">
-                <select name="assignee" class="form-control">
-                    <option></option>
-                </select>
+            <div class="row">
+                <div class="col-md-12 "  style="padding-top: 10px;">
+                    <small class="filtered-text">
+                        Filtered by 
+                        Reporter: <b>Test Reporter</b>,
+                        Engineer: <b>Ricardo Quintanilha</b>,
+                        Priority: <b>N1 (Maxima)</b>
+                        <a href="{{ url('/bugs') }}?status={{ $filters['status'] }}"><i class="fa fa-times-circle"></i> Clear this filters</a>
+                    </small>
+                </div>    
             </div>
         </div>
 
