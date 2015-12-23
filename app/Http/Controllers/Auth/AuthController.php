@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Validator;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Auth;
 
 class AuthController extends Controller
 {
@@ -63,5 +65,29 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+     * Ação de login
+     * POST /auth/login/
+     * @param LoginRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
+    public function postLogin(Request $request)
+    {
+        $authenticated = Auth::attempt([
+            'login' => $request->input('email'),
+            'password' => $request->input('password'),
+            'empresa' => 'catho'
+        ]);
+
+        if (!$authenticated) {
+            return redirect()->back()
+                ->withErrors(['A autenticação falhou. Verifique o usuário e senha.']);
+        }
+
+        return redirect('/')
+            ->with(['Login efetuado com sucesso!']);
     }
 }

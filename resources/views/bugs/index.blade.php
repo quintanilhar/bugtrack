@@ -1,5 +1,6 @@
 @extends('layouts.layout')
 
+@section('head.title', 'Bugs')
 @section('title', 'Bugs')
 
 @section('styles')

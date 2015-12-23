@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@yield('title') - Bugtrack</title>
+    <title>@yield('head.title') - Bugtrack</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     @section('styles')
         <link rel="stylesheet" href="{{ url('/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
@@ -21,7 +21,7 @@
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="/" class="logo">
+    <a href="{{ url('/') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><i class="fa fa-bug"></i></span>
       <!-- logo for regular state and mobile devices -->
@@ -60,12 +60,12 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{ asset('/theme/admin-lte/2.3.0/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+          <img src="{{ Auth::user()->getAvatar() }}" class="img-circle" alt="{{ Auth::user()->name }}">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p>{{ Auth::user()->name }}</p>
           <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          Desenvolvedor
         </div>
       </div>
 
@@ -84,7 +84,7 @@
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
         <li class="active">
-            <a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+            <a href="{{ url('/') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
         </li>
         <li>
             <a href="{{ url('/bugs') }}"><i class="fa fa-exclamation-circle"></i> <span>Bugs</span></a>
@@ -103,10 +103,10 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1 class="title">Bugs</h1>
+      <h1 class="title">@yield('title')</h1>
       <ol class="breadcrumb">
         <li><a href="#">Bugtrack</a></li>
-        <li class="active">Dashboard</li>
+        <li class="active">@yield('title')</li>
       </ol>
     </section>
 

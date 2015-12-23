@@ -1,6 +1,7 @@
 @extends('layouts.layout')
 
-@section('title', 'Adicionar - Bugs')
+@section('head.title', 'Adicionar - Bugs')
+@section('title', 'Adicionar Bug')
 
 @section('content')
 <div class="box box-primary">

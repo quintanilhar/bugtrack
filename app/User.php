@@ -8,13 +8,11 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 class User extends Model implements AuthenticatableContract,
-                                    AuthorizableContract,
-                                    CanResetPasswordContract
+                                    AuthorizableContract
 {
-    use Authenticatable, Authorizable, CanResetPassword;
+    use Authenticatable, Authorizable;
 
     const ROLE_REPORTER =  'reporter';
     const ROLE_ENGINEER = 'engineer';
@@ -31,16 +29,16 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'login', 'email', 'password'];
 
-    protected $guarded = array('id');
+    protected $guarded = ['id', 'created_at'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = ['password', 'remember_token'];
+    protected $hidden = ['password'];
 
     public function reports()
     {
@@ -50,5 +48,14 @@ class User extends Model implements AuthenticatableContract,
     public function scopeEngineers($query)
     {
         $query->where('role', 'engineer');
+    }
+
+    public function getAvatar()
+    {
+        return sprintf(
+            'http://www.gravatar.com/avatar/%s?d=identicon&s=%d',
+            md5($this->email),
+            50
+        );
     }
 }

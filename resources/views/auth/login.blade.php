@@ -1,8 +1,17 @@
-@extends('layouts.layout')
-
-@section('title', 'Autenticação')
-
-@section('body')
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bugtrack</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="{{ url('/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{ url('/theme/admin-lte/2.3.0/css/AdminLTE.min.css') }}">
+    <link rel="stylesheet" href="{{ url('/theme/admin-lte/2.3.0/css/skins/skin-blue.min.css') }}"   >
+</head>
+<body class="hold-transition skin-blue">
 <div class="login-box">
   <div class="login-logo">
     <i class="fa fa-bug"></i> <b>Bugtrack</b>
@@ -31,4 +40,5 @@
   <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
-@endsection
+</body>
+</html>
